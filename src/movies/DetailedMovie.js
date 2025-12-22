@@ -1,12 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import AverageRating from "../movie/AverageRating";
+import PosterImage from "../shared/PosterImage";
 
 function DetailedMovie({ movie }) {
   return (
     <section className="row mt-4">
       <article className="col-sm-12 col-md-6 col-lg-3">
-        <img
+        <PosterImage
           alt={`${movie.title} Poster`}
           className="rounded"
           src={movie.image_url}

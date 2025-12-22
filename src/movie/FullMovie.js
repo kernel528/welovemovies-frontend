@@ -5,6 +5,7 @@ import ReviewList from "./ReviewList";
 import TheaterList from "./TheaterList";
 import { deleteReview, readMovie, updateReview } from "../utils/api";
 import ErrorAlert from "../shared/ErrorAlert";
+import PosterImage from "../shared/PosterImage";
 
 function FullMovie() {
   const { movieId } = useParams();
@@ -39,7 +40,7 @@ function FullMovie() {
       <ErrorAlert error={error} />
       <section className="row mt-4">
         <article className="col-sm-12 col-md-6 col-lg-3">
-          <img
+          <PosterImage
             alt={`${movie.title} Poster`}
             className="rounded"
             src={movie.image_url}

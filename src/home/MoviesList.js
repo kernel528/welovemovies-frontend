@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import ErrorAlert from "../shared/ErrorAlert";
+import PosterImage from "../shared/PosterImage";
 import { listMovies } from "../utils/api";
 
 function MoviesList() {
@@ -10,14 +11,16 @@ function MoviesList() {
   useEffect(() => {
     setError(null);
     const abortController = new AbortController();
-    listMovies(abortController.signal).then(setMovies).catch(setError);
+    listMovies(abortController.signal, { isShowing: true })
+      .then(setMovies)
+      .catch(setError);
 
     return () => abortController.abort();
   }, []);
 
   const list = movies.map((movie) => (
     <article key={movie.movie_id} className="col-sm-12 col-md-6 col-lg-3 my-2">
-      <img
+      <PosterImage
         alt={`${movie.title} Poster`}
         className="rounded"
         src={movie.image_url}
