@@ -13,7 +13,7 @@ headers.append("Content-Type", "application/json");
  * This function is NOT exported because it is not needed outside of this file.
  *
  * @param url
- *  the url for the requst.
+ *  the url for the request.
  * @param options
  *  any options for fetch
  * @param onCancel
@@ -66,8 +66,11 @@ function populateTheaters(signal) {
  * @returns {Promise<[movie]>}
  *  a promise that resolves to a possibly empty array of movies saved in the database.
  */
-export async function listMovies(signal) {
-  const url = new URL(`${API_BASE_URL}/movies?is_showing=true`);
+export async function listMovies(signal, params = {}) {
+  const url = new URL(`${API_BASE_URL}/movies`);
+  if (params.isShowing !== undefined) {
+    url.searchParams.set("is_showing", params.isShowing);
+  }
   const addReviews = populateReviews(signal);
   return await fetchJson(url, { headers, signal }, []).then((movies) =>
     Promise.all(movies.map(addReviews))

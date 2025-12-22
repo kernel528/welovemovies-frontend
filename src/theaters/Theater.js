@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import PosterImage from "../shared/PosterImage";
 
 function Theater({ theater }) {
   return (
@@ -19,7 +20,7 @@ function Theater({ theater }) {
             {theater.movies.map((movie) => (
               <div key={movie.movie_id} className="col-2">
                 <Link to={`/movies/${movie.movie_id}`}>
-                  <img
+                  <PosterImage
                     alt={`${movie.title} Poster`}
                     src={movie.image_url}
                     className="w-100"
