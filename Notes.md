@@ -2,7 +2,7 @@
 
 ## Setup Forked Repo
 - Upstream:  https://github.com/Thinkful-Ed/starter-movie-front-end
-- Forked:  https://github.com/kernel528/starter-movie-front-end
+- Current repo:  https://github.com/kernel528/welovemovies-frontend
 
 ## Install Locally
 - Due to some errors and compatibility issues with node `18.20.4+` the following was executed to resolve:
