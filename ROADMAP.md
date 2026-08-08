@@ -9,8 +9,10 @@ is operating reliably.
 ## Delivery Policy
 
 1. Create `dev` from `main` before enabling feature work.
-2. Create feature branches from `dev` using the `dev/<feature>` convention.
-3. A pull request from `dev/<feature>` to `dev` runs Drone validation and must
+2. Create feature branches from `dev` using the `feature/<feature>` convention.
+   Git cannot use `dev/<feature>` while a `dev` branch exists because branch
+   names share the same ref namespace.
+3. A pull request from `feature/<feature>` to `dev` runs Drone validation and must
    pass before review and merge.
 4. A merge into `dev` triggers trusted development-image publication.
 5. A pull request from `dev` to `main` runs validation and must pass before
