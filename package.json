@@ -21,6 +21,11 @@
     "build": "react-scripts build",
     "build-legacy": "NODE_OPTIONS=--openssl-legacy-provider react-scripts build",
     "test": "react-scripts test",
+    "test:ci": "CI=true react-scripts test --watchAll=false",
+    "docker:build": "docker build --target runtime --build-arg REACT_APP_API_BASE_URL=http://localhost:5001 --tag kernel528/welovemovies-frontend:local .",
+    "docker:run": "docker run --rm --name welovemovies-frontend --publish 8080:80 kernel528/welovemovies-frontend:local",
+    "docker:stop": "docker rm --force welovemovies-frontend",
+    "docker:smoke": "npm run docker:build && node scripts/smoke-local-image.js",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
