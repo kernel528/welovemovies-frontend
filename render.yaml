@@ -1,7 +1,7 @@
 services:
   - type: web
     runtime: static
-    name: kernel528-WeLoveMovies-front-end
+    name: kernel528-welovemovies-dashboard
     branch: main
     buildCommand: npm ci && npm run build
     staticPublishPath: ./dist

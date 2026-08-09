@@ -60,7 +60,8 @@ the generated JavaScript bundle; do not place credentials in this value.
 Deploy this Vite application to Render as a Static Site, not a Node Web Service.
 The checked-in `render.yaml` declares the production configuration:
 
-- Service: `kernel528-WeLoveMovies-front-end`
+- Canonical dashboard: `https://kernel528-welovemovies-dashboard.onrender.com/`
+- Service: `kernel528-welovemovies-dashboard`
 - Branch: `main`
 - Build command: `npm ci && npm run build`
 - Publish directory: `dist`
