@@ -1,4 +1,5 @@
 import React from "react";
+import { version } from "../../package.json";
 import HeaderNav from "./HeaderNav";
 import headerImage from "./header.jpg";
 
@@ -9,11 +10,20 @@ function Header() {
     backgroundSize: "100% auto",
   };
 
+  const versionStyle = {
+    position: "absolute",
+    right: "1rem",
+    top: "1rem",
+  };
+
   return (
     <div
-      className="jumbotron jumbotron-fluid text-white border-bottom border-dark pt-0"
+      className="jumbotron jumbotron-fluid text-white border-bottom border-dark pt-0 position-relative"
       style={style}
     >
+      <small className="text-light" style={versionStyle}>
+        v{version}
+      </small>
       <HeaderNav />
       <div className="container">
         <h1 className="display-4">Find your next favorite movie!</h1>
