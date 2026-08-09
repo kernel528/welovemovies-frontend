@@ -2,7 +2,7 @@
 
 ## Current State
 
-- Latest release: `2.0.0`, published from `main` on 2026-08-09.
+- Latest release: `2.0.1`, published from `main` on 2026-08-09.
 - The deprecated Create React App toolchain was replaced with Vite 7 and
   Vitest in the `2.0.0` release.
 - Node `22.15.0` is pinned for local and Docker builds.
@@ -10,13 +10,16 @@
 - Drone validates pull requests by building, testing, and smoke-testing the
   Docker image. Trusted `dev` pushes publish development images; annotated tags
   on `main` publish production images and verify the deployed site.
+- Render deploys the application as a Static Site from `main` using
+  `npm ci && npm run build`, publishes `dist/`, and rewrites SPA routes to
+  `/index.html`.
 
 ## Roadmap Status
 
 | Phase | Status | Target / outcome |
 | --- | --- | --- |
 | Toolchain and security baseline | Complete | `2.0.0`: Vite, Vitest, safe review rendering, and zero open Dependabot alerts |
-| Hero version indicator | Planned | `2.0.1`: display the application version at the top-right of the hero banner |
+| Hero version indicator | Complete | `2.0.1`: application version displayed at the top-right of the hero banner |
 | Container and CI delivery | Complete | Docker validation, Drone publication, tagged releases, and Render smoke checks |
 | Self-hosted production | Future | Evaluate static hosting, TLS, monitoring, rollback, and immutable image deployment |
 
@@ -43,14 +46,14 @@
 
 ### `2.0.1`: Hero Version Indicator
 
-1. Read the package version at build time and render it at the top-right of the
-   shared hero banner in `src/shared/Header.jsx`.
-2. Keep the indicator legible over the hero image on desktop and mobile without
-   changing route navigation or hero copy.
-3. Add focused coverage that confirms the rendered version matches the release
-   metadata.
-4. Validate with Vitest, the Vite production build, and the Docker smoke test
-   before preparing the `2.0.1` patch release.
+1. Reads the package version at build time and renders it at the top-right of
+   the shared hero banner in `src/shared/Header.jsx`.
+2. Keeps the indicator legible over the hero image on desktop and mobile
+   without changing route navigation or hero copy.
+3. Includes focused coverage confirming the rendered version matches the
+   release metadata.
+4. Was validated with Vitest, the Vite production build, and the Docker smoke
+   test before release.
 
 ### Local And Container Validation
 
