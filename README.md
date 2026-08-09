@@ -55,8 +55,18 @@ The Drone repository must be trusted for access to `/var/run/docker.sock`.
 `VITE_API_BASE_URL` is public build-time configuration and is embedded in
 the generated JavaScript bundle; do not place credentials in this value.
 
-## Deployment
-I deployed this to Render.com as a Web Instance to connect to https://kernel528-welovemovies.onrender.com
-Name:  `kernel528-WeLoveMovies-front-end`
-- Updated the `.env.production` with setting for `VITE_API_BASE_URL` to match deployed URL.
-- As I was using http://www.render.com, during deployment setup on render.com, set the environment variable to match `.env.production` value.
+## Render Deployment
+
+Deploy this Vite application to Render as a Static Site, not a Node Web Service.
+The checked-in `render.yaml` declares the production configuration:
+
+- Service: `kernel528-WeLoveMovies-front-end`
+- Branch: `main`
+- Build command: `npm ci && npm run build`
+- Publish directory: `dist`
+- SPA route rewrite: `/*` to `/index.html`
+
+`VITE_API_BASE_URL` is compiled into the bundle from `.env.production` unless
+Render supplies an overriding build environment variable. Do not configure a
+start command: `npm start` runs Vite's development server, and the removed
+`start-legacy` command belonged only to Create React App.
