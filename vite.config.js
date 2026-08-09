@@ -3,6 +3,9 @@ import react from "@vitejs/plugin-react";
 
 export default defineConfig({
   plugins: [react()],
+  server: {
+    allowedHosts: ["kernel528-welovemovies-front-end.onrender.com"],
+  },
   test: {
     environment: "jsdom",
     globals: true,
