@@ -15,11 +15,13 @@ This is the Front End Application for the WeLoveMovies project. Follow the instr
 1. Fork / clone this repository.
 2. Run `npm install`.
 
-Use `npm start-legacy` to run the application. If you deploy this application, create a `.env.production` file similar to the `.env.development` file.
+Use `npm start` to run the Vite development server. If you deploy this
+application, create a `.env.production` file similar to the `.env.development`
+file.
 
 ## Docker And CI
 
-Use Node `20.18.3`, as pinned in `.nvmrc`. Run `npm run test:ci` for the
+Use Node `22.15.0`, as pinned in `.nvmrc`. Run `npm run test:ci` for the
 non-interactive test suite. Build the static runtime image with
 `npm run docker:build`, serve it locally with `npm run docker:run`, or build
 and smoke-test it with `npm run docker:smoke`.
@@ -42,11 +44,11 @@ Configure these repository secrets in `drone.kernelsanders.biz`:
 - `production_frontend_url`
 
 The Drone repository must be trusted for access to `/var/run/docker.sock`.
-`REACT_APP_API_BASE_URL` is public build-time configuration and is embedded in
+`VITE_API_BASE_URL` is public build-time configuration and is embedded in
 the generated JavaScript bundle; do not place credentials in this value.
 
 ## Deployment
 I deployed this to Render.com as a Web Instance to connect to https://kernel528-welovemovies.onrender.com
 Name:  `kernel528-WeLoveMovies-front-end`
-- Updated the `.env.production` with setting for `REACT_APP_API_BASE_URL` to match deployed URL.
+- Updated the `.env.production` with setting for `VITE_API_BASE_URL` to match deployed URL.
 - As I was using http://www.render.com, during deployment setup on render.com, set the environment variable to match `.env.production` value.
