@@ -28,10 +28,9 @@ is operating reliably.
 
 1. Implement the backend CI/CD roadmap first so the frontend has a stable,
    versioned API image and defined deployment URL.
-2. The project uses Create React App 5 and has no Node runtime pin. Add and
-   validate a pinned Node version before CI is relied upon. Node 20 is the
-   initial conservative target; test Node 22 separately before adopting it.
-3. `REACT_APP_API_BASE_URL` is compiled into the browser bundle at build time.
+2. The project uses Vite 7 with a Node `22.15.0` runtime pin. Keep the Node
+   image aligned with Vite's supported Node versions.
+3. `VITE_API_BASE_URL` is compiled into the browser bundle at build time.
    Each environment image must be built with its intended public API URL.
 4. There are no current frontend test files. Build validation is useful, but
    focused tests must be added before test status is considered a meaningful
@@ -50,8 +49,7 @@ Use Docker Hub repository `kernel528/welovemovies-frontend`.
 
 1. Add `.nvmrc` and, if useful, an `engines` field that pin the selected Node
    runtime.
-2. Add a non-interactive test script that runs
-   `CI=true react-scripts test --watchAll=false`.
+2. Add a non-interactive test script that runs `vitest run`.
 3. Add focused tests for the API utility, route rendering, loading/error state,
    and one representative movie interaction.
 4. Ensure tests mock network calls and do not depend on Render, local backend,
@@ -64,9 +62,9 @@ Use Docker Hub repository `kernel528/welovemovies-frontend`.
 1. Add a multi-stage `Dockerfile`.
 2. The build stage must use the pinned Node runtime, run `npm ci`, execute the
    non-interactive test command, and run `npm run build`.
-3. Accept `REACT_APP_API_BASE_URL` as an explicit build argument and expose it
+3. Accept `VITE_API_BASE_URL` as an explicit build argument and expose it
    only during the static bundle build.
-4. Serve the generated `build` directory from a minimal static HTTP image.
+4. Serve the generated `dist` directory from a minimal static HTTP image.
 5. Add a server configuration that supports SPA route fallback, static asset
    caching, and an HTTP health endpoint or root-page smoke check.
 6. Add `.dockerignore` for `node_modules`, `build`, Git metadata, local env
@@ -77,9 +75,9 @@ Use Docker Hub repository `kernel528/welovemovies-frontend`.
 
 1. Add `.drone.yml` with a Docker runner pipeline named `validation`.
 2. Trigger it for pull requests targeting `dev` and `main`.
-3. Build the Docker image with an explicit non-production
-   `REACT_APP_API_BASE_URL` suitable for static validation.
-4. Treat a failed dependency install, test command, or CRA production build as
+3. Build the Docker image with an explicit non-production `VITE_API_BASE_URL`
+   suitable for static validation.
+4. Treat a failed dependency install, test command, or Vite production build as
    a failed image build.
 5. Run the resulting image as a uniquely named disposable container and probe
    the root document and an SPA route.
@@ -117,7 +115,7 @@ Pull-request validation must not publish images or access Docker Hub secrets.
    enable GitHub webhook delivery.
 2. Configure `docker_username`, `docker_password`, and
    `slack_webhook_drone_alerts` as repository secrets.
-3. Store the development and production `REACT_APP_API_BASE_URL` values in
+3. Store the development and production `VITE_API_BASE_URL` values in
    protected Drone configuration or secrets, rather than relying on committed
    environment files for release builds.
 4. Confirm the Docker runner can access the host Docker socket and required

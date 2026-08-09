@@ -1,4 +1,5 @@
 import { listTheaters } from "./api";
+import { vi } from "vitest";
 
 afterEach(() => {
   delete global.fetch;
@@ -6,9 +7,9 @@ afterEach(() => {
 
 test("requests theaters from the configured API and returns response data", async () => {
   const theaters = [{ theater_id: 1, name: "Regal City Center" }];
-  global.fetch = jest.fn().mockResolvedValue({
+  global.fetch = vi.fn().mockResolvedValue({
     status: 200,
-    json: jest.fn().mockResolvedValue({ data: theaters }),
+    json: vi.fn().mockResolvedValue({ data: theaters }),
   });
 
   await expect(listTheaters()).resolves.toEqual(theaters);

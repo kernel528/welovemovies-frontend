@@ -1,4 +1,5 @@
 import { render, screen } from "@testing-library/react";
+import { vi } from "vitest";
 import Review from "./Review";
 
 test("renders review content as text", () => {
@@ -14,8 +15,8 @@ test("renders review content as text", () => {
           organization_name: "Cinema Weekly",
         },
       }}
-      deleteReview={jest.fn()}
-      setReviewScore={jest.fn()}
+      deleteReview={vi.fn()}
+      setReviewScore={vi.fn()}
     />
   );
 

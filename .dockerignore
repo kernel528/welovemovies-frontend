@@ -6,6 +6,7 @@
 .idea
 .vscode
 build
+dist
 coverage
 images
 node_modules
