@@ -10,6 +10,8 @@
 - Drone validates pull requests by building, testing, and smoke-testing the
   Docker image. Trusted `dev` pushes publish development images; annotated tags
   on `main` publish production images and verify the deployed site.
+- Production dashboard: `https://kernel528-welovemovies-dashboard.onrender.com/`.
+- Production API: `https://kernel528-welovemovies.onrender.com/`.
 
 ## Roadmap Status
 
@@ -18,6 +20,8 @@
 | Toolchain and security baseline | Complete | `2.0.0`: Vite, Vitest, safe review rendering, and zero open Dependabot alerts |
 | Hero version indicator | Planned | `2.0.1`: display the application version at the top-right of the hero banner |
 | Container and CI delivery | Complete | Docker validation, Drone publication, tagged releases, and Render smoke checks |
+| Render Static Site | Complete | Vite build published from `dist` with an SPA rewrite at the canonical dashboard URL |
+| Render MCP review | Queued | Assess updated Render MCP capabilities after the shared reference is available |
 | Self-hosted production | Future | Evaluate static hosting, TLS, monitoring, rollback, and immutable image deployment |
 
 ## Delivery Policy
@@ -71,6 +75,15 @@
   immutable build, and `latest` tags, invoke the configured Render deployment
   hook, and smoke-test the deployed frontend.
 
+### Render Static Site
+
+- The canonical dashboard is
+  `https://kernel528-welovemovies-dashboard.onrender.com/`.
+- Render builds the Vite bundle with `npm ci && npm run build`, publishes
+  `dist/`, and rewrites SPA routes to `/index.html`.
+- The prior Node Web Service remains a temporary learning environment. Its
+  explicit Vite host allowlist does not apply to the Static Site.
+
 ### Security Maintenance
 
 - The vulnerable `markdown` renderer was removed before the Vite migration;
@@ -106,3 +119,6 @@ convenience tags, not a complete deployment record.
    verified.
 3. Expand focused UI and loading/error-state coverage as application behavior
    changes.
+4. Review the updated Render MCP server capabilities after the reference link is
+   provided, and decide whether they improve Static Site inspection or
+   deployment verification.
