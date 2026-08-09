@@ -11,6 +11,15 @@
   Docker image. Trusted `dev` pushes publish development images; annotated tags
   on `main` publish production images and verify the deployed site.
 
+## Roadmap Status
+
+| Phase | Status | Target / outcome |
+| --- | --- | --- |
+| Toolchain and security baseline | Complete | `2.0.0`: Vite, Vitest, safe review rendering, and zero open Dependabot alerts |
+| Hero version indicator | Planned | `2.0.1`: display the application version at the top-right of the hero banner |
+| Container and CI delivery | Complete | Docker validation, Drone publication, tagged releases, and Render smoke checks |
+| Self-hosted production | Future | Evaluate static hosting, TLS, monitoring, rollback, and immutable image deployment |
+
 ## Delivery Policy
 
 1. Create feature branches from `dev` using the `feature/<feature>` convention.
@@ -31,6 +40,17 @@
 - JSX-bearing application and component-test files use the `.jsx` extension.
 - `VITE_API_BASE_URL` is public build-time configuration and must never contain
   credentials.
+
+### `2.0.1`: Hero Version Indicator
+
+1. Read the package version at build time and render it at the top-right of the
+   shared hero banner in `src/shared/Header.jsx`.
+2. Keep the indicator legible over the hero image on desktop and mobile without
+   changing route navigation or hero copy.
+3. Add focused coverage that confirms the rendered version matches the release
+   metadata.
+4. Validate with Vitest, the Vite production build, and the Docker smoke test
+   before preparing the `2.0.1` patch release.
 
 ### Local And Container Validation
 
