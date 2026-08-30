@@ -2,7 +2,7 @@
 
 Primary project knowledge lives at:
 
-~/Projects/Engineering/projects/welovemovies/
+~/Projects/Agentic_Engineering/projects/welovemovies/
 
 Read:
 - project-profile.md

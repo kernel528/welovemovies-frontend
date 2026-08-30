@@ -7,13 +7,15 @@ import { listMovies } from "../utils/api";
 function MoviesList() {
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     setError(null);
     const abortController = new AbortController();
     listMovies(abortController.signal, { isShowing: true })
       .then(setMovies)
-      .catch(setError);
+      .catch(setError)
+      .finally(() => setIsLoading(false));
 
     return () => abortController.abort();
   }, []);
@@ -40,6 +42,7 @@ function MoviesList() {
       <ErrorAlert error={error} />
       <h2 className="font-poppins">Now Showing</h2>
       <hr />
+      {isLoading && <p role="status">Loading movies...</p>}
       <section className="row">{list}</section>
     </main>
   );
