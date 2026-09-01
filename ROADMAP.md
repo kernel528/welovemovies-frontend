@@ -24,7 +24,8 @@
 | Hero version indicator | Complete | `2.0.1`: application version displayed at the top-right of the hero banner |
 | Container and CI delivery | Complete | Docker validation, Drone publication, tagged releases, and Render smoke checks |
 | Render Static Site | Complete | Vite build published from `dist` with an SPA rewrite at the canonical dashboard URL |
-| Render MCP review | Queued | Assess updated Render MCP capabilities after the shared reference is available |
+| Render MCP review | Complete | Read-only service, deploy, logs, metrics, and Postgres inspection verified |
+| List loading and error states | In progress | Add focused coverage for movie and theater API loading and failure UI |
 | Self-hosted production | Future | Evaluate static hosting, TLS, monitoring, rollback, and immutable image deployment |
 
 ## Delivery Policy
@@ -120,8 +121,4 @@ convenience tags, not a complete deployment record.
 2. Complete a staged Render-to-self-hosted cutover only after the target
    frontend and backend domains, CORS policy, and security headers are
    verified.
-3. Expand focused UI and loading/error-state coverage as application behavior
-   changes.
-4. Review the updated Render MCP server capabilities after the reference link is
-   provided, and decide whether they improve Static Site inspection or
-   deployment verification.
+3. Complete the in-progress movie and theater list loading/error-state coverage.

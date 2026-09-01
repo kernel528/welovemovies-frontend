@@ -6,11 +6,15 @@ import { listTheaters } from "../utils/api";
 function TheaterList() {
   const [theaters, setTheaters] = useState([]);
   const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     setError(null);
     const abortController = new AbortController();
-    listTheaters(abortController.signal).then(setTheaters).catch(setError);
+    listTheaters(abortController.signal)
+      .then(setTheaters)
+      .catch(setError)
+      .finally(() => setIsLoading(false));
     return () => abortController.abort();
   }, []);
 
@@ -23,6 +27,7 @@ function TheaterList() {
       <ErrorAlert error={error} />
       <h2 className="font-poppins">All Theaters</h2>
       <hr />
+      {isLoading && <p role="status">Loading theaters...</p>}
       <section className="row">{list}</section>
     </main>
   );
