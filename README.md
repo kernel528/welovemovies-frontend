@@ -12,11 +12,12 @@ This is the Front End Application for the WeLoveMovies project. Follow the instr
 
 ## Current Baseline
 
-- Latest release: `2.0.0` (2026-08-09).
+- Latest release: `2.0.2` (2026-09-01).
 - Toolchain: Vite 7, Vitest, React 17, and Node `22.15.0`.
 - Dependabot alerts: none open (verified 2026-08-09).
 - The `2.0.0` release replaces deprecated Create React App tooling and removes
   the former vulnerable Markdown renderer.
+- `2.0.2` adds accessible loading and error states for movie and theater lists.
 
 ## Installation
 
