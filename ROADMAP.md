@@ -2,7 +2,7 @@
 
 ## Current State
 
-- Latest release: `2.0.1`, published from `main` on 2026-08-09.
+- Latest release: `2.0.2`, prepared from `dev` on 2026-09-01.
 - The deprecated Create React App toolchain was replaced with Vite 7 and
   Vitest in the `2.0.0` release.
 - Node `22.15.0` is pinned for local and Docker builds.
@@ -25,7 +25,7 @@
 | Container and CI delivery | Complete | Docker validation, Drone publication, tagged releases, and Render smoke checks |
 | Render Static Site | Complete | Vite build published from `dist` with an SPA rewrite at the canonical dashboard URL |
 | Render MCP review | Complete | Read-only service, deploy, logs, metrics, and Postgres inspection verified |
-| List loading and error states | In progress | Add focused coverage for movie and theater API loading and failure UI |
+| List loading and error states | Complete | `2.0.2`: accessible movie and theater API loading and failure UI coverage |
 | Self-hosted production | Future | Evaluate static hosting, TLS, monitoring, rollback, and immutable image deployment |
 
 ## Delivery Policy
@@ -59,6 +59,12 @@
    release metadata.
 4. Was validated with Vitest, the Vite production build, and the Docker smoke
    test before release.
+
+### `2.0.2`: List Loading And Error States
+
+1. Shows accessible loading and failure UI while movie and theater lists are
+   fetched.
+2. Includes focused coverage for the list API states.
 
 ### Local And Container Validation
 
@@ -121,4 +127,3 @@ convenience tags, not a complete deployment record.
 2. Complete a staged Render-to-self-hosted cutover only after the target
    frontend and backend domains, CORS policy, and security headers are
    verified.
-3. Complete the in-progress movie and theater list loading/error-state coverage.
