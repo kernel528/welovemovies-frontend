@@ -11,7 +11,7 @@ COPY . ./
 
 ENV CI=true
 
-RUN npm run test:ci
+RUN npm run test:coverage
 
 FROM test AS build
 

@@ -9,5 +9,16 @@ export default defineConfig({
   test: {
     environment: "jsdom",
     globals: true,
+    coverage: {
+      provider: "v8",
+      include: ["src/**/*.{js,jsx}"],
+      exclude: ["src/**/*.test.{js,jsx}"],
+      thresholds: {
+        branches: 35,
+        functions: 25,
+        lines: 40,
+        statements: 40,
+      },
+    },
   },
 });

@@ -12,12 +12,14 @@ This is the Front End Application for the WeLoveMovies project. Follow the instr
 
 ## Current Baseline
 
-- Latest release: `2.0.2` (2026-09-01).
+- Latest release: `2.1.0` (2026-09-27).
 - Toolchain: Vite 7, Vitest, React 17, and Node `22.15.0`.
 - Dependabot alerts: none open (verified 2026-08-09).
 - The `2.0.0` release replaces deprecated Create React App tooling and removes
   the former vulnerable Markdown renderer.
 - `2.0.2` adds accessible loading and error states for movie and theater lists.
+- `2.1.0` adds API failure handling, detail-request cleanup, and all-movies
+  loading and error states.
 
 ## Installation
 
@@ -33,7 +35,8 @@ file.
 Use Node `22.15.0`, as pinned in `.nvmrc`. Run `npm run test:ci` for the
 non-interactive test suite. Build the static runtime image with
 `npm run docker:build`, serve it locally with `npm run docker:run`, or build
-and smoke-test it with `npm run docker:smoke`.
+and smoke-test it with `npm run docker:smoke`. Run `npm run test:coverage` to
+enforce the frontend coverage baseline.
 
 Drone validates pull requests targeting `dev` and `main` by testing, building,
 and smoke-testing the Docker image. A trusted push to `dev` publishes

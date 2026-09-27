@@ -2,7 +2,7 @@
 
 ## Current State
 
-- Latest release: `2.0.2`, prepared from `dev` on 2026-09-01.
+- Latest release: `2.1.0`, prepared from `dev` on 2026-09-27.
 - The deprecated Create React App toolchain was replaced with Vite 7 and
   Vitest in the `2.0.0` release.
 - Node `22.15.0` is pinned for local and Docker builds.
@@ -26,6 +26,7 @@
 | Render Static Site | Complete | Vite build published from `dist` with an SPA rewrite at the canonical dashboard URL |
 | Render MCP review | Complete | Read-only service, deploy, logs, metrics, and Postgres inspection verified |
 | List loading and error states | Complete | `2.0.2`: accessible movie and theater API loading and failure UI coverage |
+| API resilience | Complete | `2.1.0`: reliable failed-request handling, movie detail cleanup, and all-movies loading/error coverage |
 | Self-hosted production | Future | Evaluate static hosting, TLS, monitoring, rollback, and immutable image deployment |
 
 ## Delivery Policy
@@ -65,6 +66,12 @@
 1. Shows accessible loading and failure UI while movie and theater lists are
    fetched.
 2. Includes focused coverage for the list API states.
+
+### `2.1.0`: API Resilience
+
+1. Treats non-success API responses as errors and renders them in affected views.
+2. Cancels movie detail requests on route changes and handles review mutation failures.
+3. Adds all-movies loading/error states and regression coverage.
 
 ### Local And Container Validation
 
@@ -116,7 +123,7 @@ convenience tags, not a complete deployment record.
 ## Required Drone Configuration
 
 - `docker_username`, `docker_password`, and `slack_webhook_drone_alerts`
-- `development_api_base_url` and `production_api_base_url`
+- `production_api_base_url`
 - `render_deploy_hook` and `production_frontend_url`
 - Trusted repository access to `/var/run/docker.sock`
 
