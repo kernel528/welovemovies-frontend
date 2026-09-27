@@ -13,26 +13,38 @@ function FullMovie() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    loadMovie(movieId);
+    return loadMovie(movieId);
   }, [movieId]);
 
   function loadMovie(movieId) {
     setError(null);
     const abortController = new AbortController();
-    readMovie(movieId, abortController.signal).then(setMovie).catch(setError);
+    readMovie(movieId, abortController.signal)
+      .then((movie) => {
+        if (!abortController.signal.aborted) {
+          setMovie(movie);
+        }
+      })
+      .catch((error) => {
+        if (error.name !== "AbortError") {
+          setError(error);
+        }
+      });
+
     return () => abortController.abort();
   }
 
   function deleteReviewHandler({ movie_id: movieId, review_id: reviewId }) {
-    deleteReview(reviewId).then(() => loadMovie(movieId));
+    setError(null);
+    deleteReview(reviewId).then(() => loadMovie(movieId)).catch(setError);
   }
 
   function updateScoreHandler(
     { movie_id: movieId, review_id: reviewId },
     score
   ) {
-    console.log("score", reviewId, score);
-    updateReview(reviewId, { score }).then(() => loadMovie(movieId));
+    setError(null);
+    updateReview(reviewId, { score }).then(() => loadMovie(movieId)).catch(setError);
   }
 
   return (
