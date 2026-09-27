@@ -32,9 +32,10 @@ async function fetchJson(url, options, onCancel) {
 
     const payload = await response.json();
 
-    if (payload.error) {
-      return Promise.reject({ message: payload.error });
+    if (!response.ok || payload.error) {
+      throw new Error(payload.error || `Request failed with status ${response.status}.`);
     }
+
     return payload.data;
   } catch (error) {
     if (error.name !== "AbortError") {
