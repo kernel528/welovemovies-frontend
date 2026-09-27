@@ -54,7 +54,7 @@ Configure these repository secrets in `drone.kernelsanders.biz`:
 The Drone repository must be trusted for access to `/var/run/docker.sock`.
 `VITE_API_BASE_URL` is public build-time configuration and is embedded in
 the generated JavaScript bundle; do not place credentials in this value. The
-development image targets `http://jedi:5001` for the Sandersnetwork Swarm
+development image targets `http://192.168.1.5:5001` for the Sandersnetwork Swarm
 deployment; local Docker builds retain the `http://localhost:5001` default.
 
 ## Render Deployment
