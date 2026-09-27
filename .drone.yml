@@ -63,9 +63,6 @@ steps:
 
   - name: development-docker-build
     image: docker:27-cli
-    environment:
-      DEVELOPMENT_API_BASE_URL:
-        from_secret: development_api_base_url
     volumes:
       - name: docker_sock
         path: /var/run/docker.sock
@@ -75,7 +72,7 @@ steps:
       branch:
         - dev
     commands:
-      - docker build --target runtime --build-arg VITE_API_BASE_URL="$DEVELOPMENT_API_BASE_URL" --tag welovemovies-frontend:dev-${DRONE_COMMIT:0:8}-drone-build-${DRONE_BUILD_NUMBER} .
+      - docker build --target runtime --build-arg VITE_API_BASE_URL=http://jedi:5001 --tag welovemovies-frontend:dev-${DRONE_COMMIT:0:8}-drone-build-${DRONE_BUILD_NUMBER} .
 
   - name: development-smoke-test
     image: docker:27-cli
