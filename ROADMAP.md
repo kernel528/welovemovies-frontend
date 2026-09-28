@@ -2,7 +2,7 @@
 
 ## Current State
 
-- Latest release: `2.1.0`, prepared from `dev` on 2026-09-27.
+- Next release: `2.1.1`, prepared from `dev` on 2026-09-27.
 - The deprecated Create React App toolchain was replaced with Vite 7 and
   Vitest in the `2.0.0` release.
 - Node `22.15.0` is pinned for local and Docker builds.
@@ -27,6 +27,7 @@
 | Render MCP review | Complete | Read-only service, deploy, logs, metrics, and Postgres inspection verified |
 | List loading and error states | Complete | `2.0.2`: accessible movie and theater API loading and failure UI coverage |
 | API resilience | Complete | `2.1.0`: reliable failed-request handling, movie detail cleanup, and all-movies loading/error coverage |
+| Development image publication recovery | In progress | `2.1.1`: repair the Drone webhook so `dev-latest` advances after trusted `dev` pushes |
 | Self-hosted production | Future | Evaluate static hosting, TLS, monitoring, rollback, and immutable image deployment |
 
 ## Delivery Policy
