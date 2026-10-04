@@ -12,7 +12,7 @@ Read:
 
 Keep code changes focused.
 Do not make broad refactors without asking.
-At session close, update the Engineering ai-handoff.md.
+At session close, update the Agentic_Engineering ai-handoff.md.
 - Never commit directly to main.
 - Always create a new branch if on `main` branch.
 - Always ask to confirm commits before committing, include a suggested commit message.
