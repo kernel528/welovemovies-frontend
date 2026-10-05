@@ -2,8 +2,8 @@
 
 ## Current State
 
-- Release status: `3.0.0` is merged to `dev` and `main`; the annotated version
-  tag is pending.
+- Release status: `3.0.4` is tagged from `main`; Docker publication, Render
+  deployment, and production dashboard smoke validation passed.
 - The deprecated Create React App toolchain was replaced with Vite 7 and
   Vitest in the `2.0.0` release.
 - Node `22.15.0` is pinned for local and Docker builds.
@@ -29,7 +29,7 @@
 | List loading and error states | Complete | `2.0.2`: accessible movie and theater API loading and failure UI coverage |
 | API resilience | Complete | `2.1.0`: reliable failed-request handling, movie detail cleanup, and all-movies loading/error coverage |
 | Development image publication recovery | Complete | `2.1.1`: the repaired Drone webhook advances `dev-latest` after trusted `dev` pushes |
-| Express 5 coordinated release | Complete | `3.0.0`: frontend contract validated against the Express 5 backend route and JSON error behavior; merged to `dev` and `main`, tag pending |
+| Express 5 coordinated release and release verification | Complete | `3.0.4`: frontend contract validated against the Express 5 backend route and JSON error behavior; tagged deployment and dashboard smoke validation passed |
 | Self-hosted production | Future | Evaluate static hosting, TLS, monitoring, rollback, and immutable image deployment |
 
 ## Delivery Policy
@@ -92,8 +92,8 @@
 - Trusted `dev` pushes publish immutable
   `dev-<commit>-drone-build-<number>` plus `dev-latest` Docker Hub tags.
 - Tags verify that the target commit belongs to `main`, publish the release,
-  immutable build, and `latest` tags, invoke the configured Render deployment
-  hook, and smoke-test the deployed frontend.
+  immutable build, and `latest` tags, optionally invoke a configured Render
+  deployment hook, and smoke-test the deployed frontend.
 
 ### Render Static Site
 
@@ -127,7 +127,7 @@ convenience tags, not a complete deployment record.
 
 - `docker_username`, `docker_password`, and `slack_webhook_drone_alerts`
 - `production_api_base_url`
-- `render_deploy_hook` and `production_frontend_url`
+- `render_deploy_hook` only when a manual Render deploy is required
 - Trusted repository access to `/var/run/docker.sock`
 
 ## Future Work
