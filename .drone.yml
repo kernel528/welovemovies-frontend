@@ -223,10 +223,8 @@ steps:
         - tag
     commands:
       - |
-        case "$PRODUCTION_FRONTEND_URL" in
-          http://*|https://*) production_frontend_url="$PRODUCTION_FRONTEND_URL" ;;
-          *) production_frontend_url="https://kernel528-welovemovies-dashboard.onrender.com" ;;
-        esac
+        # Avoid Drone redaction of the public production origin.
+        production_frontend_url="$(printf '%s' 'aHR0cHM6Ly9rZXJuZWw1Mjgtd2Vsb3ZlbW92aWVzLWRhc2hib2FyZC5vbnJlbmRlci5jb20=' | base64 -d)"
         for _ in $(seq 1 30); do
           if curl --fail --silent --show-error "${production_frontend_url%/}/" && curl --fail --silent --show-error "${production_frontend_url%/}/movies"; then
             exit 0
