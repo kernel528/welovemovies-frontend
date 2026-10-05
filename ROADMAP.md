@@ -132,8 +132,17 @@ convenience tags, not a complete deployment record.
 
 ## Future Work
 
-1. Evaluate a self-hosted static-site platform with TLS, monitoring, rollback,
-   and immutable Docker image deployment.
-2. Complete a staged Render-to-self-hosted cutover only after the target
-   frontend and backend domains, CORS policy, and security headers are
-   verified.
+1. Replace the manually deployed `welovemovies-dev` stack with the
+   Portainer-managed `welovemovies` stack from
+   `docker-swarm/stacks/welovemovies-stack.yml`, using independently pinned
+   backend and frontend image versions.
+2. Add local reverse-proxy, TLS, and DNSexit records for
+   `welovemovies-frontend-dev.kernelsanders.biz`. Build its development image
+   with the matching development API URL because Vite embeds that value at
+   build time.
+3. Promote verified immutable images to a local production stack at
+   `welovemovies-frontend.kernelsanders.biz` before replacing the Render Static
+   Site.
+4. Complete a staged Render-to-self-hosted cutover only after the target
+   frontend and backend domains, CORS policy, security headers, monitoring, and
+   rollback procedures are verified.
