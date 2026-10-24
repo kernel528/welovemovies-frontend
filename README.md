@@ -12,8 +12,8 @@ This is the Front End Application for the WeLoveMovies project. Follow the instr
 
 ## Current Baseline
 
-- Release status: `3.0.0` is merged to `dev` and `main`; the annotated version
-  tag is pending.
+- Latest release: `3.0.4` (tagged and deployed); the `3.0.5` security patch is
+  prepared for review and tagging.
 - Toolchain: Vite 7, Vitest, React 17, and Node `22.23.4`.
 - Dependabot alerts: none open (verified 2026-08-09).
 - The `2.0.0` release replaces deprecated Create React App tooling and removes
