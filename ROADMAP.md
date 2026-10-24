@@ -2,8 +2,8 @@
 
 ## Current State
 
-- Release status: `3.0.4` is tagged from `main`; the `3.0.5` security patch is
-  prepared for review and tagging.
+- Release status: `3.0.5` is tagged; the `3.0.6` monthly refresh release is in
+  preparation. The dashboard remains paused pending production cutover.
 - The deprecated Create React App toolchain was replaced with Vite 7 and
   Vitest in the `2.0.0` release.
 - Node `22.23.4` is pinned for local and Docker builds.
@@ -30,7 +30,8 @@
 | API resilience | Complete | `2.1.0`: reliable failed-request handling, movie detail cleanup, and all-movies loading/error coverage |
 | Development image publication recovery | Complete | `2.1.1`: the repaired Drone webhook advances `dev-latest` after trusted `dev` pushes |
 | Express 5 coordinated release and release verification | Complete | `3.0.4`: frontend contract validated against the Express 5 backend route and JSON error behavior; tagged deployment and dashboard smoke validation passed |
-| Node.js and dependency security patch | In progress | `3.0.5`: Node.js `22.23.4`, patched build dependencies, and production redeployment |
+| Node.js and dependency security patch | Complete | `3.0.5`: Node.js `22.23.4`, patched build dependencies, and production dashboard smoke verification before the monthly DB rollover |
+| Monthly Render PostgreSQL refresh | In progress | `3.0.6`: reseeded PostgreSQL 18.6 production database; dashboard redeployment follows backend cutover |
 | Self-hosted production | Future | Evaluate static hosting, TLS, monitoring, rollback, and immutable image deployment |
 
 ## Delivery Policy
