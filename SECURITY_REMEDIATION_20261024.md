@@ -26,5 +26,6 @@ site, not to serve application requests. No PHP runtime was found.
    integration.
 
 Frontend tests, production build, Docker image smoke test, and `npm audit` have
-passed. Production deployment has not been performed as part of this
-remediation.
+passed. Render production is live on the security-updated main commit. The
+follow-up `3.0.5` release bump and tag are tracked separately; the monthly
+PostgreSQL refresh remains a subsequent operation.
