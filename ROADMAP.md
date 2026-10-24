@@ -2,8 +2,8 @@
 
 ## Current State
 
-- Release status: `3.0.5` is tagged; the `3.0.6` monthly refresh release is in
-  preparation. The dashboard remains paused pending production cutover.
+- Release status: `3.0.6` is tagged from `main`; the monthly PostgreSQL refresh,
+  dashboard redeployment, and production smoke checks are complete.
 - The deprecated Create React App toolchain was replaced with Vite 7 and
   Vitest in the `2.0.0` release.
 - Node `22.23.4` is pinned for local and Docker builds.
@@ -31,7 +31,7 @@
 | Development image publication recovery | Complete | `2.1.1`: the repaired Drone webhook advances `dev-latest` after trusted `dev` pushes |
 | Express 5 coordinated release and release verification | Complete | `3.0.4`: frontend contract validated against the Express 5 backend route and JSON error behavior; tagged deployment and dashboard smoke validation passed |
 | Node.js and dependency security patch | Complete | `3.0.5`: Node.js `22.23.4`, patched build dependencies, and production dashboard smoke verification before the monthly DB rollover |
-| Monthly Render PostgreSQL refresh | In progress | `3.0.6`: reseeded PostgreSQL 18.6 production database; dashboard redeployment follows backend cutover |
+| Monthly Render PostgreSQL refresh | Complete | `3.0.6`: production database refreshed and validated; dashboard redeployed after backend cutover and smoke-tested |
 | Self-hosted production | Future | Evaluate static hosting, TLS, monitoring, rollback, and immutable image deployment |
 
 ## Delivery Policy

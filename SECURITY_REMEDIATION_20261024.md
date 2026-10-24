@@ -26,7 +26,6 @@ site, not to serve application requests. No PHP runtime was found.
    integration.
 
 Frontend tests, production build, Docker image smoke test, and `npm audit` have
-passed. Release `3.0.5` is tagged and the security-updated static build was
-verified on Render. The October monthly refresh reseeded the replacement
-production database; the dashboard remains paused until the backend cutover and
-the follow-up `3.0.6` release.
+passed. Release `3.0.5` was verified on Render, followed by the October monthly
+PostgreSQL 18.6 refresh and the `3.0.6` release. The dashboard is live after the
+backend cutover; production bundle and SPA smoke checks passed.
