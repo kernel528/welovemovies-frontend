@@ -6,7 +6,7 @@
   deployment, and production dashboard smoke validation passed.
 - The deprecated Create React App toolchain was replaced with Vite 7 and
   Vitest in the `2.0.0` release.
-- Node `22.15.0` is pinned for local and Docker builds.
+- Node `22.23.4` is pinned for local and Docker builds.
 - Dependabot has no open alerts as of 2026-08-09.
 - Drone validates pull requests by building, testing, and smoke-testing the
   Docker image. Trusted `dev` pushes publish development images; annotated tags
@@ -78,7 +78,7 @@
 
 ### Local And Container Validation
 
-- The multi-stage Dockerfile uses Node `22.15.0`, runs `npm ci`, `vitest run`,
+- The multi-stage Dockerfile uses Node `22.23.4`, runs `npm ci`, `vitest run`,
   and `vite build`, then serves `dist/` through Nginx.
 - Nginx provides SPA route fallback, immutable static asset caching, and a
   `/health` endpoint.

@@ -14,7 +14,7 @@ This is the Front End Application for the WeLoveMovies project. Follow the instr
 
 - Release status: `3.0.0` is merged to `dev` and `main`; the annotated version
   tag is pending.
-- Toolchain: Vite 7, Vitest, React 17, and Node `22.15.0`.
+- Toolchain: Vite 7, Vitest, React 17, and Node `22.23.4`.
 - Dependabot alerts: none open (verified 2026-08-09).
 - The `2.0.0` release replaces deprecated Create React App tooling and removes
   the former vulnerable Markdown renderer.
@@ -37,7 +37,7 @@ file.
 
 ## Docker And CI
 
-Use Node `22.15.0`, as pinned in `.nvmrc`. Run `npm run test:ci` for the
+Use Node `22.23.4`, as pinned in `.nvmrc`. Run `npm run test:ci` for the
 non-interactive test suite. Build the static runtime image with
 `npm run docker:build`, serve it locally with `npm run docker:run`, or build
 and smoke-test it with `npm run docker:smoke`. Run `npm run test:coverage` to

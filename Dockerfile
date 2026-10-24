@@ -1,4 +1,4 @@
-FROM node:22.15.0-bookworm AS dependencies
+FROM node:22.23.4-bookworm AS dependencies
 
 WORKDIR /app
 
